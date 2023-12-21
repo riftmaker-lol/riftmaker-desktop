@@ -1,15 +1,20 @@
-// Prevents additional console window on Windows in release, DO NOT REMOVE!!
 #![cfg_attr(not(debug_assertions), windows_subsystem = "windows")]
 
-// Learn more about Tauri commands at https://tauri.app/v1/guides/features/command
+use lol_game_client_api::api::GameClient;
+
 #[tauri::command]
-fn greet(name: &str) -> String {
-    format!("Hello, {}! You've been greeted from Rust!", name)
+async fn test() {
+    println!("Test triggered!");
+
+    let client = GameClient::new();
+    let active_player = client.active_player().await.unwrap();
+
+    println!("Active player: {}", active_player.summoner_name);
 }
 
 fn main() {
     tauri::Builder::default()
-        .invoke_handler(tauri::generate_handler![greet])
+        .invoke_handler(tauri::generate_handler![test])
         .run(tauri::generate_context!())
         .expect("error while running tauri application");
 }
