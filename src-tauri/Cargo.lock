@@ -2441,6 +2441,7 @@ dependencies = [
  "lol-game-client-api",
  "reqwest",
  "serde",
+ "serde_derive",
  "serde_json",
  "tauri",
  "tauri-build",
