@@ -54,16 +54,10 @@ pub struct CustomLobby {
 #[serde(rename_all = "camelCase")]
 pub struct Lobby {
     pub can_start_activity: bool,
-    pub chat_room_id: String,
-    pub chat_room_key: String,
     pub game_config: GameConfig,
     pub invitations: Vec<Invitation>,
     pub local_member: LocalMember,
     pub members: Vec<Member>,
-    pub party_id: String,
-    pub party_type: String,
-    pub restrictions: Vec<Restriction>,
-    pub warnings: Vec<Warning>,
 }
 
 #[derive(Default, Debug, Clone, PartialEq, Serialize, Deserialize)]
@@ -94,18 +88,6 @@ pub struct GameConfig {
 #[derive(Default, Debug, Clone, PartialEq, Serialize, Deserialize)]
 #[serde(rename_all = "camelCase")]
 pub struct CustomSpectator {
-    pub allowed_change_activity: bool,
-    pub allowed_invite_others: bool,
-    pub allowed_kick_others: bool,
-    pub allowed_start_activity: bool,
-    pub allowed_toggle_invite: bool,
-    pub auto_fill_eligible: bool,
-    pub auto_fill_protected_for_promos: bool,
-    pub auto_fill_protected_for_soloing: bool,
-    pub auto_fill_protected_for_streaking: bool,
-    pub bot_champion_id: i64,
-    pub bot_difficulty: String,
-    pub bot_id: String,
     pub first_position_preference: String,
     pub is_bot: bool,
     pub is_leader: bool,
@@ -113,7 +95,6 @@ pub struct CustomSpectator {
     pub puuid: String,
     pub ready: bool,
     pub second_position_preference: String,
-    pub show_ghosted_banner: bool,
     pub summoner_icon_id: i64,
     pub summoner_id: i64,
     pub summoner_internal_name: String,
@@ -125,18 +106,6 @@ pub struct CustomSpectator {
 #[derive(Default, Debug, Clone, PartialEq, Serialize, Deserialize)]
 #[serde(rename_all = "camelCase")]
 pub struct CustomTeam100 {
-    pub allowed_change_activity: bool,
-    pub allowed_invite_others: bool,
-    pub allowed_kick_others: bool,
-    pub allowed_start_activity: bool,
-    pub allowed_toggle_invite: bool,
-    pub auto_fill_eligible: bool,
-    pub auto_fill_protected_for_promos: bool,
-    pub auto_fill_protected_for_soloing: bool,
-    pub auto_fill_protected_for_streaking: bool,
-    pub bot_champion_id: i64,
-    pub bot_difficulty: String,
-    pub bot_id: String,
     pub first_position_preference: String,
     pub is_bot: bool,
     pub is_leader: bool,
@@ -156,18 +125,6 @@ pub struct CustomTeam100 {
 #[derive(Default, Debug, Clone, PartialEq, Serialize, Deserialize)]
 #[serde(rename_all = "camelCase")]
 pub struct CustomTeam200 {
-    pub allowed_change_activity: bool,
-    pub allowed_invite_others: bool,
-    pub allowed_kick_others: bool,
-    pub allowed_start_activity: bool,
-    pub allowed_toggle_invite: bool,
-    pub auto_fill_eligible: bool,
-    pub auto_fill_protected_for_promos: bool,
-    pub auto_fill_protected_for_soloing: bool,
-    pub auto_fill_protected_for_streaking: bool,
-    pub bot_champion_id: i64,
-    pub bot_difficulty: String,
-    pub bot_id: String,
     pub first_position_preference: String,
     pub is_bot: bool,
     pub is_leader: bool,
@@ -198,18 +155,6 @@ pub struct Invitation {
 #[derive(Default, Debug, Clone, PartialEq, Serialize, Deserialize)]
 #[serde(rename_all = "camelCase")]
 pub struct LocalMember {
-    pub allowed_change_activity: bool,
-    pub allowed_invite_others: bool,
-    pub allowed_kick_others: bool,
-    pub allowed_start_activity: bool,
-    pub allowed_toggle_invite: bool,
-    pub auto_fill_eligible: bool,
-    pub auto_fill_protected_for_promos: bool,
-    pub auto_fill_protected_for_soloing: bool,
-    pub auto_fill_protected_for_streaking: bool,
-    pub bot_champion_id: i64,
-    pub bot_difficulty: String,
-    pub bot_id: String,
     pub first_position_preference: String,
     pub is_bot: bool,
     pub is_leader: bool,
@@ -217,7 +162,6 @@ pub struct LocalMember {
     pub puuid: String,
     pub ready: bool,
     pub second_position_preference: String,
-    pub show_ghosted_banner: bool,
     pub summoner_icon_id: i64,
     pub summoner_id: i64,
     pub summoner_internal_name: String,
@@ -229,18 +173,6 @@ pub struct LocalMember {
 #[derive(Default, Debug, Clone, PartialEq, Serialize, Deserialize)]
 #[serde(rename_all = "camelCase")]
 pub struct Member {
-    pub allowed_change_activity: bool,
-    pub allowed_invite_others: bool,
-    pub allowed_kick_others: bool,
-    pub allowed_start_activity: bool,
-    pub allowed_toggle_invite: bool,
-    pub auto_fill_eligible: bool,
-    pub auto_fill_protected_for_promos: bool,
-    pub auto_fill_protected_for_soloing: bool,
-    pub auto_fill_protected_for_streaking: bool,
-    pub bot_champion_id: i64,
-    pub bot_difficulty: String,
-    pub bot_id: String,
     pub first_position_preference: String,
     pub is_bot: bool,
     pub is_leader: bool,
@@ -248,7 +180,6 @@ pub struct Member {
     pub puuid: String,
     pub ready: bool,
     pub second_position_preference: String,
-    pub show_ghosted_banner: bool,
     pub summoner_icon_id: i64,
     pub summoner_id: i64,
     pub summoner_internal_name: String,

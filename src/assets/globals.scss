@@ -72,10 +72,10 @@
   }
 
   body {
-    @apply bg-background text-foreground font-sans;
+    @apply bg-background text-foreground font-sans flex flex-col;
 
     #root {
-      @apply flex flex-col min-h-screen;
+      @apply flex flex-col min-h-screen flex-grow;
     }
   }
 }

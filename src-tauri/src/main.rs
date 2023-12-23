@@ -22,7 +22,7 @@ fn main() {
         })
         .invoke_handler(tauri::generate_handler![
             test,
-            get_customs,
+            current_lobby,
             invite_summoner,
             check_client
         ])

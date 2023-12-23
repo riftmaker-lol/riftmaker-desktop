@@ -24,7 +24,7 @@ const TournamentDetails = () => {
   const isOwner = tournament.createdById === user?.id;
 
   return (
-    <div className="flex flex-col justify-start w-full container h-full mt-4">
+    <div className="flex flex-col justify-start w-full container h-full mt-4 flex-grow">
       <div className="flex flex-row gap-4 items-center my-4">
         <h1 className="font-lol text-3xl font-bold">Tournament: {tournament.name}</h1>
         <TournamentStatus status={tournament.status} size="sm" />

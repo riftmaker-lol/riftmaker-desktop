@@ -54,7 +54,7 @@ const Layout = () => {
     <QueryClientProvider client={queryClient}>
       <ThemeProvider defaultTheme="dark">
         <Header />
-        <main className="flex-grow bg-background font-sans antialiased flex items-center flex-col relative overflow-hidden">
+        <main className="flex-grow bg-background font-sans antialiased flex items-center flex-col relative overflow-hidden  h-full">
           <Suspense fallback={<LoadingIndicator variant="logo" className="my-auto" />}>
             {location?.pathname !== "/" && (
               <div className="flex justify-start w-full container mt-4 -ml-4">

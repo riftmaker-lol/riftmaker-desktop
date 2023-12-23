@@ -15,7 +15,7 @@ const TournamentForm = () => {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      tournamentId: "",
+      tournamentId: "clqco8806001l2ygfnqshiio7", // TODO: Remove this
     },
   });
 

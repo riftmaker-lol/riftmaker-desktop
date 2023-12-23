@@ -59,8 +59,7 @@ impl GameClient {
             endpoint = endpoint
         );
 
-        println!("url: {}", url);
-        println!("password: {}", password);
+        println!("url: {} | password: {}", url, password);
 
         let data = self
             .client
@@ -69,8 +68,15 @@ impl GameClient {
             .send()
             .await?
             .json::<T>()
-            .await?;
-        Ok(data)
+            .await;
+
+        match data {
+            Ok(data) => Ok(data),
+            Err(e) => {
+                println!("error: {:?}", e);
+                Err(QueryError::Reqwest(e))
+            }
+        }
     }
 
     pub async fn post_data<T: for<'de> Deserialize<'de>>(
@@ -95,8 +101,14 @@ impl GameClient {
             .send()
             .await?
             .json::<T>()
-            .await?;
+            .await;
 
-        Ok(data)
+        match data {
+            Ok(data) => Ok(data),
+            Err(e) => {
+                println!("error: {:?}", e);
+                Err(QueryError::Reqwest(e))
+            }
+        }
     }
 }

@@ -1,6 +1,4 @@
 pub mod commands {
-    use league_client_connector::RiotLockFile;
-
     use crate::rito::{
         self,
         model::{Invitation, Lobby, SummonerInfo},
@@ -28,16 +26,20 @@ pub mod commands {
     }
 
     #[tauri::command]
-    pub(crate) async fn get_customs() -> Lobby {
+    pub(crate) async fn current_lobby() -> Option<Lobby> {
         let client = rito::GameClient::new();
-        let lobby = client
-            .get_data::<Lobby>("lol-lobby/v2/lobby")
-            .await
-            .unwrap();
+        let lobby = client.get_data::<Lobby>("lol-lobby/v2/lobby").await;
 
-        println!("lobby: {:?}", lobby);
-
-        lobby
+        match lobby {
+            Ok(lobby) => {
+                println!("lobby: {:?}", lobby);
+                Some(lobby)
+            }
+            Err(e) => {
+                println!("error: {:?}", e);
+                None
+            }
+        }
     }
 
     #[tauri::command]
