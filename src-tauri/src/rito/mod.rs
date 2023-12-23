@@ -1,13 +1,13 @@
 pub mod model;
 
-use league_client_connector::{LeagueClientConnector, RiotLockFile};
+use league_client_connector::{LeagueClientConnector, LeagueConnectorError, RiotLockFile};
 use reqwest::Certificate;
 use serde::Deserialize;
 use thiserror::Error;
 
 pub struct GameClient {
     client: reqwest::Client,
-    lockfile: RiotLockFile,
+    pub lockfile: Result<RiotLockFile, LeagueConnectorError>,
 }
 
 #[cold]
@@ -34,7 +34,14 @@ impl GameClient {
                 .add_root_certificate(get_riot_root_certificate())
                 .build()
                 .unwrap(),
-            lockfile: LeagueClientConnector::parse_lockfile().unwrap(),
+            lockfile: LeagueClientConnector::parse_lockfile(),
+        }
+    }
+
+    pub fn get_lockfile(&self) -> RiotLockFile {
+        match &self.lockfile {
+            Ok(lockfile) => lockfile.clone(),
+            Err(_) => panic!("Failed to get lockfile"),
         }
     }
 
@@ -42,8 +49,10 @@ impl GameClient {
         &self,
         endpoint: &str,
     ) -> Result<T, QueryError> {
-        let port = self.lockfile.port;
-        let password = self.lockfile.password.clone();
+        let lockfile = self.get_lockfile();
+
+        let port = lockfile.port;
+        let password = lockfile.password.clone();
         let url = format!(
             "https://127.0.0.1:{port}/{endpoint}",
             port = port,
@@ -69,8 +78,9 @@ impl GameClient {
         endpoint: &str,
         body: &str,
     ) -> Result<T, QueryError> {
-        let port = self.lockfile.port;
-        let password = self.lockfile.password.clone();
+        let lockfile = self.get_lockfile();
+        let port = lockfile.port;
+        let password = lockfile.password.clone();
         let url = format!(
             "https://127.0.0.1:{port}/{endpoint}",
             port = port,

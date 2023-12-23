@@ -72,27 +72,10 @@
   }
 
   body {
-    @apply bg-background text-foreground;
-    .vector1 {
-      z-index: 0;
-      position: absolute;
-      width: 80%;
-      height: 80%;
-      transform: rotate(8.26deg);
-      flex-shrink: 0;
-      filter: blur(90px);
-      fill: linear-gradient(180deg, #111 0%, #00A896 99.68%);
-    }
+    @apply bg-background text-foreground font-sans;
 
-    .vector2 {
-      z-index: 0;
-      position: absolute;
-      width: 80%;
-      height: 80%;
-      transform: rotate(173.26deg);
-      flex-shrink: 0;
-      filter: blur(90px);
-      fill: linear-gradient(180deg, #111 0%, #02C39A 100%);
+    #root {
+      @apply flex flex-col min-h-screen;
     }
   }
 }

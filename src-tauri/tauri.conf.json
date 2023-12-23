@@ -20,7 +20,7 @@
     "bundle": {
       "active": true,
       "targets": "all",
-      "identifier": "com.tauri.dev",
+      "identifier": "lol.riftmaker.desktop",
       "icon": [
         "icons/32x32.png",
         "icons/128x128.png",
@@ -36,9 +36,9 @@
       {
         "fullscreen": false,
         "resizable": true,
-        "title": "riftmaker-desktop",
-        "width": 800,
-        "height": 600
+        "title": "Riftmaker Desktop",
+        "width": 1280,
+        "height": 768
       }
     ]
   }
