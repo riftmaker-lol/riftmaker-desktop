@@ -11,18 +11,22 @@ pub mod commands {
     }
 
     #[tauri::command]
-    pub(crate) async fn test() -> SummonerInfo {
-        println!("Test triggered!");
-
+    pub(crate) async fn summoner_profile() -> Option<SummonerInfo> {
         let client = rito::GameClient::new();
         let summoner_info = client
             .get_data::<SummonerInfo>("lol-summoner/v1/current-summoner")
-            .await
-            .unwrap();
+            .await;
 
-        println!("summoner_info: {:?}", summoner_info);
-
-        summoner_info
+        match summoner_info {
+            Ok(summoner_info) => {
+                println!("summoner_info: {:?}", summoner_info);
+                Some(summoner_info)
+            }
+            Err(e) => {
+                println!("error: {:?}", e);
+                None
+            }
+        }
     }
 
     #[tauri::command]

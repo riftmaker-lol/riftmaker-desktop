@@ -1,3 +1,17 @@
+export interface SummonerProfile {
+  accountId: number
+  displayName: string
+  gameName: string
+  internalName: string
+  nameChangeFlag: boolean
+  percentCompleteForNextLevel: number
+  profileIconId: number
+  puuid: string
+  summonerId: number
+  summonerLevel: number
+  tagLine: string
+}
+
 export interface Lobby {
   canStartActivity: boolean;
   gameConfig: GameConfig;

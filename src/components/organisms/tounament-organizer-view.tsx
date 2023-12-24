@@ -17,6 +17,7 @@ import { Lobby } from "@/types/rito";
 import { useState } from "react";
 import { toast } from "sonner";
 import { Button } from "../ui/button";
+import useSummonerProfile from "@/hooks/useSummonerProfile";
 
 interface TournamentOrganizerViewProps {
   tournament: Tournament;
@@ -57,6 +58,7 @@ const InviteParticipants = ({ tournament }: TournamentOrganizerViewProps) => {
             .sort((a, b) => sortByRole(a, b))
             .map((player) => (
               <div key={player.id} className="flex flex-col gap-1 ">
+                {/* Add an online indicator to see if the players are ready */}
                 <span className="text-sm text-gray-500">{player.role}</span>
                 <span
                   className={cn("text-sm flex gap-2", {
@@ -80,7 +82,6 @@ const InviteParticipants = ({ tournament }: TournamentOrganizerViewProps) => {
         <DrawerHeader>
           <DrawerTitle>Team invites:</DrawerTitle>
           <DrawerDescription>Select the 2 teams you would like to invite to the lobby:</DrawerDescription>
-
           <div className="flex gap-4 mt-4 flex-col">{Teams}</div>
         </DrawerHeader>
         <DrawerFooter>
@@ -114,6 +115,8 @@ const TournamentOrganizerView = ({ tournament }: TournamentOrganizerViewProps) =
     onSuccess: (res) => setLobby(res),
     onError: () => toast.error("Error while checking client connection"),
   });
+
+  useSummonerProfile();
 
   return (
     <div className="mt-4 h-full flex flex-col flex-grow">

@@ -29,6 +29,5 @@ export const useCommandLazy = <T, P extends InvokeArgs | undefined = undefined>(
     enabled: false,
     ...options,
   });
-
   return queryResult;
 };

@@ -13,6 +13,8 @@ export interface User {
   elo: string;
   riotId: string;
   role: string;
+  accountId: number | undefined;
+  image: string;
 }
 
 export enum TournamentStatus {

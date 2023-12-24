@@ -11,7 +11,7 @@ const TournamentDetails = () => {
   const { tournamentId } = useParams();
   const { user } = useStore();
 
-  const { data: tournament } = useQuery({
+  const { data: tournament, refetch } = useQuery({
     queryKey: ["tournament", tournamentId],
     queryFn: async () => {
       const res = await api.get<Tournament>(`/tournament/${tournamentId}`);
@@ -29,10 +29,10 @@ const TournamentDetails = () => {
         <h1 className="font-lol text-3xl font-bold">Tournament: {tournament.name}</h1>
         <TournamentStatus status={tournament.status} size="sm" />
       </div>
-      {isOwner ? (
+      {!isOwner ? (
         <TournamentOrganizerView tournament={tournament} />
       ) : (
-        <TournamentParticipantView tournament={tournament} />
+        <TournamentParticipantView tournament={tournament} refetch={refetch} />
       )}
     </div>
   );
